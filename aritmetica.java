@@ -37,11 +37,23 @@ public class aritmetica {
         return Math.sqrt(numero);
     }
 
+    /*
+    * Función: factorial
+    * Autor: Tais Gemio Escobar
+     */
+    public static long factorial(long n) {
+        if (n == 0) {
+            return 1;
+        }
+        return n * factorial(n - 1);
+    }
+
     public static void main(String[] args) {
         System.out.println("--- Pruebas de Operaciones ---");
         System.out.println("Suma: " + suma(5, 3));
         System.out.println("Multiplicación: " + multiplicacion(5.0, 3.0));
         System.out.println("Porcentaje: " + porcentaje(90, 12));
         System.out.println("Raíz cuadrada: " + raiz(25));
+        System.out.println("Factorial: " + factorial(5));
     }
 }
