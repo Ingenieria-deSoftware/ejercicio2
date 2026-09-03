@@ -85,13 +85,13 @@ Para evitar sobreescrituras y conflictos desordenados, cada integrante debe segu
 	
 	 _(Si varios editaron el archivo `aritmetica` a la vez, Git marcará un conflicto. Deberán abrir el archivo, decidir cómo quedan combinadas las funciones, guardar, hacer `git add aritmetica` y confirmar el commit de merge)_.
 	
-3. **Actualizar rama `feature` remota.
+3. **Actualizar rama `feature` remota**.
 	
 	```bash
 	git push origin feature/porcentaje
 	```
 	
-**Paso 9: Ya que la feature ha sido finalizada haremos el merge y subiremos `develop`.
+**Paso 9: Ya que la feature ha sido finalizada haremos el merge y subiremos `develop`**.
 	
 1. **Cambiamos a la rama `develop` para fusionar tu rama feature**:
     
@@ -111,4 +111,78 @@ Para evitar sobreescrituras y conflictos desordenados, cada integrante debe segu
     ```bash
     git branch -d feature/suma
     ```
-    
+
+### Resolución de conflictos
+
+*Un conflicto no es un error de sistema; es Git pidiendo criterio humano para no sobreescribir código*.
+
+Git detendrá la operación y mostrará:
+
+```text
+Auto-merging aritmetica.java
+CONFLICT (content): Merge conflict in aritmetica.java
+Automatic merge failed; fix conflicts and then commit the result.
+
+```
+
+**Muestra el archivo en el editor de código:**
+Verán las marcas automáticas de colisión de Git:
+```java
+<<<<<<< HEAD (feature/suma)
+    /*
+     * Función: resta
+     * Autor: devA
+     */
+    public static double resta(double a, double b) {
+        return a - b;
+    }
+=======
+    /*
+     * Función: suma
+     * Autor: devB
+     */
+    public static double suma(double a, double b) {
+        return a + b;
+    }
+>>>>>>> develop
+```
+
+**Resuelven el código manualmente:**
+
+En nuestro caso, conservaremos los cambios que hicimos y los cambios que hizo el compañero para esto,
+borran los delimitadores (`<<<<<<<`, `=======`, `>>>>>>>`) y dejan ordenadas ambas funciones:
+```java
+    /*
+     * Función: suma
+     * Autor: devB
+     */
+    public static double suma(double a, double b) {
+        return a + b;
+    }
+
+    /*
+     * Función: resta
+     * Autor: devA
+     */
+    public static double resta(double a, double b) {
+        return a - b;
+    }
+```
+
+
+**Verifican compilación (Java 21):**
+```bash
+javac aritmetica.java
+
+```
+
+
+**Consolidan y suben:**
+
+```bash
+git add aritmetica.java
+git commit -m "fix(merge): resuelto conflicto integrando suma y resta"
+git push origin feature/suma
+
+```
+
