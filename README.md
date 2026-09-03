@@ -7,7 +7,7 @@
 Cada miembro del equipo debe clonar el proyecto en su máquina:
 
 ```bash
-git clone https://github.com/<usuario-creador>/ejercicio2.git
+git clone https://github.com/Ingenieria-deSoftware/ejercicio2.git
 cd ejercicio2
 ```
 
@@ -31,7 +31,7 @@ Ejemplo de una función en el archivo `aritmetica.java`
 
 Todos deben hacer sus implementaciones debajo de `SECCION DE OPERACIONES ARITMÉTICAS` en el orden asignado: suma, resta, multiplicación, división, módulo, potencia, raíz, porcentaje, promedio, factorial.
 
-Cada Bloque debe tener este encabezado.
+Cada Bloque debe tener encabezado como en este ejemplo.
 
 ```java
 /* 
@@ -63,9 +63,9 @@ git push origin feature/porcentaje
 
 ### **Integración y Merge en `develop`**
 
-**Paso 6: Integrar en local y subir a `develop`**
+**Paso 6: Integrar en local y subir a rama remota**
 
-El documento indica sincronizar con el modelo de ramas y subir `develop` al repositorio compartido. Para evitar sobreescrituras y conflictos desordenados, cada integrante debe seguir este orden:
+Para evitar sobreescrituras y conflictos desordenados, cada integrante debe seguir este orden:
 
 1. **Cambiar a la rama `develop` local y actualizarla** con los últimos cambios del remoto:
     
@@ -76,23 +76,39 @@ El documento indica sincronizar con el modelo de ramas y subir `develop` al repo
     
     (También se sugiere el uso de `git pull --rebase origin develop` para mantener un historial lineal).
     
-1. **Fusionar tu rama feature dentro de `develop`**:
+2. **Volver a la rama `feature`** para hacer merge con `develop`
+	
+	```bash
+	git checkout feature/porcentaje
+	git merge develop
+	```
+	
+	 _(Si varios editaron el archivo `aritmetica` a la vez, Git marcará un conflicto. Deberán abrir el archivo, decidir cómo quedan combinadas las funciones, guardar, hacer `git add aritmetica` y confirmar el commit de merge)_.
+	
+3. **Actualizar rama `feature` remota.
+	
+	```bash
+	git push origin feature/porcentaje
+	```
+	
+**Paso 9: Ya que la feature ha sido finalizada haremos el merge y subiremos `develop`.
+	
+1. **Cambiamos a la rama `develop` para fusionar tu rama feature**:
     
     ```bash
+    git checkout develop
     git merge feature/porcentaje
     ```
     
-    _(Si varios editaron el archivo `aritmetica` a la vez, Git marcará un conflicto. Deberán abrir el archivo, decidir cómo quedan combinadas las funciones, guardar, hacer `git add aritmetica` y confirmar el commit de merge)_.
-    
-1. **Subir `develop` actualizado a GitHub**:
+2. **Subir `develop` actualizado a GitHub**:
     
     ```bash
     git push origin develop
     ```
     
-2. _(Opcional / Buenas prácticas)_ Una vez integrada, puedes borrar la rama feature local:
+3. _(Opcional / Buenas prácticas)_ Una vez integrada, puedes borrar la rama feature local:
     
     ```bash
-    git branch -d feature/porcentaje
+    git branch -d feature/suma
     ```
     
