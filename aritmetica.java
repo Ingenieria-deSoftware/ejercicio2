@@ -37,11 +37,17 @@ public class aritmetica {
         return Math.sqrt(numero);
     }
 
+    public static int potencia(int numero, int exponente){
+        return (int)Math.pow(numero, exponente);
+    }
+       
+
     public static void main(String[] args) {
         System.out.println("--- Pruebas de Operaciones ---");
         System.out.println("Suma: " + suma(5, 3));
         System.out.println("Multiplicación: " + multiplicacion(5.0, 3.0));
         System.out.println("Porcentaje: " + porcentaje(90, 12));
         System.out.println("Raíz cuadrada: " + raiz(25));
+        System.out.println("Potencia: " + potencia(2, 3));
     }
 }
