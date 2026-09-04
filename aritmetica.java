@@ -17,6 +17,15 @@ public class aritmetica {
     public static double multiplicacion(double a, double b) {
         return a * b;
     }
+
+    /* 
+    * Función: Division
+    * Autor: Natalie Saravia Camacho
+    */
+
+    public static double division(double a, double b) { 
+        return a / b ; 
+    }
     
     /*
     * Función: porcentaje
