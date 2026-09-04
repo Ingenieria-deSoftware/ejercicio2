@@ -36,6 +36,13 @@ public class aritmetica {
         }
         return Math.sqrt(numero);
     }
+ /*
+    * Función: promedio
+    * Autor: Nicole Flores 
+    */
+   public static double promedio(double a, double b) {
+        return (a + b) / 2.0;
+    }
 
     /*
     * Función: factorial
