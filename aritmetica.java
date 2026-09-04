@@ -36,7 +36,13 @@ public class aritmetica {
         }
         return Math.sqrt(numero);
     }
-
+ /*
+    * Función: promedio
+    * Autor: Nicole Flores 
+    */
+   public static double promedio(double a, double b) {
+        return (a + b) / 2.0;
+    }
     public static void main(String[] args) {
         System.out.println("--- Pruebas de Operaciones ---");
         System.out.println("Suma: " + suma(5, 3));
