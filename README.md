@@ -90,99 +90,184 @@ Para evitar sobreescrituras y conflictos desordenados, cada integrante debe segu
 	```bash
 	git push origin feature/porcentaje
 	```
-	
-**Paso 9: Ya que la feature ha sido finalizada haremos el merge y subiremos `develop`**.
-	
-1. **Cambiamos a la rama `develop` para fusionar tu rama feature**:
+
+Una vez integrada, puedes borrar la rama feature local:
+
+```bash
+
+git branch -d feature/porcentaje
+
+```
+
+  
+**Paso 9: Ya que la feature ha sido finalizada haremos Pull Request en GitHub**
+
+Para añadir una capa de seguridad. **No se haran el push a `develop`**. La rama estará protegida y no se podrá hacer push aunque lo intenten.
+
+Omitiremos el paso **6** de **Ejercicio 2** y el paso **5** de **Recomendaciones** del pdf.
+
+Para crear el **Pull Request**:
+
+Vas a GitHub y como acabas de hacer un push te aparecerá directamente el boton verde **Compare & pull request**
+
+Y si no aparecierá: Haz clic en la pestaña **Pull requests** $\rightarrow$ botón verde **New pull request**.
+
+
+- **Configuración del par de ramas (Crucial):**
     
-    ```bash
-    git checkout develop
-    git merge feature/porcentaje
-    ```
+    - **Base:** La rama receptora (por ejemplo, `develop`).
+        
+    - **Compare:** La rama con el nuevo código (por ejemplo, `feature/porcentaje`).
+        
+- **Verificación de viabilidad:**
     
-2. **Subir `develop` actualizado a GitHub**:
+    - Si los conflictos ya se resolvieron en local, aparecerá la marca verde: **"Able to merge"**.
+        
+    - Si existen colisiones de líneas no resueltas, GitHub mostrará una advertencia indicando que no se puede fusionar automáticamente.
+        
+- **Contenido descriptivo:**
     
-    ```bash
-    git push origin develop
-    ```
-    
-3. _(Opcional / Buenas prácticas)_ Una vez integrada, puedes borrar la rama feature local:
-    
-    ```bash
-    git branch -d feature/suma
-    ```
+    - **Descripción Breve:** Qué hace la función, el nombre del autor y cómo se probó (mostrando en pantalla con println).
+
+- **Confirmación:** Clic en el botón verde **Create pull request**.
+
 
 ### Resolución de conflictos
 
+  
+
 *Un conflicto no es un error de sistema; es Git pidiendo criterio humano para no sobreescribir código*.
+
+  
 
 Git detendrá la operación y mostrará:
 
+  
+
 ```text
+
 Auto-merging aritmetica.java
+
 CONFLICT (content): Merge conflict in aritmetica.java
+
 Automatic merge failed; fix conflicts and then commit the result.
 
+  
+
 ```
 
+  
+
 **Muestra el archivo en el editor de código:**
+
 Verán las marcas automáticas de colisión de Git:
+
 ```java
+
 <<<<<<< HEAD (feature/suma)
-    /*
-     * Función: resta
-     * Autor: devA
-     */
-    public static double resta(double a, double b) {
-        return a - b;
-    }
+
+/*
+
+* Función: resta
+
+* Autor: devA
+
+*/
+
+public static double resta(double a, double b) {
+
+return a - b;
+
+}
+
 =======
-    /*
-     * Función: suma
-     * Autor: devB
-     */
-    public static double suma(double a, double b) {
-        return a + b;
-    }
+
+/*
+
+* Función: suma
+
+* Autor: devB
+
+*/
+
+public static double suma(double a, double b) {
+
+return a + b;
+
+}
+
 >>>>>>> develop
+
 ```
+
+  
 
 **Resuelven el código manualmente:**
 
-En nuestro caso, conservaremos los cambios que hicimos y los cambios que hizo el compañero para esto,
-borran los delimitadores (`<<<<<<<`, `=======`, `>>>>>>>`) y dejan ordenadas ambas funciones:
-```java
-    /*
-     * Función: suma
-     * Autor: devB
-     */
-    public static double suma(double a, double b) {
-        return a + b;
-    }
+  
 
-    /*
-     * Función: resta
-     * Autor: devA
-     */
-    public static double resta(double a, double b) {
-        return a - b;
-    }
+En nuestro caso, conservaremos los cambios que hicimos y los cambios que hizo el compañero para esto,
+
+borran los delimitadores (`<<<<<<<`, `=======`, `>>>>>>>`) y dejan ordenadas ambas funciones:
+
+```java
+
+/*
+
+* Función: suma
+
+* Autor: devB
+
+*/
+
+public static double suma(double a, double b) {
+
+return a + b;
+
+}
+
+  
+
+/*
+
+* Función: resta
+
+* Autor: devA
+
+*/
+
+public static double resta(double a, double b) {
+
+return a - b;
+
+}
+
 ```
 
+  
+  
 
 **Verifican compilación (Java 21):**
+
 ```bash
+
 javac aritmetica.java
 
 ```
 
+  
+  
 
 **Consolidan y suben:**
 
+  
+
 ```bash
+
 git add aritmetica.java
+
 git commit -m "fix(merge): resuelto conflicto integrando suma y resta"
+
 git push origin feature/suma
 
 ```
-
