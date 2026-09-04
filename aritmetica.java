@@ -55,7 +55,7 @@ public class aritmetica {
         return n * factorial(n - 1);
     }
    /*
-    * Función: Potenci
+    * Función: Potencia
     * Autor: Jose Armando Quisbert Medrano
      */
     public static int potencia(int numero, int exponente){
