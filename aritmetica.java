@@ -63,14 +63,6 @@ public class aritmetica {
         }
         return n * factorial(n - 1);
     }
-
-    /*
-    * Función: Módulo
-    * Autor: Anelis Cordova Nigoevic
-    */
-public static double modulo(double a, double b) {
-    return a % b;
-}
    /*
     * Función: Potencia
     * Autor: Jose Armando Quisbert Medrano
@@ -86,7 +78,6 @@ public static double modulo(double a, double b) {
         System.out.println("Multiplicación: " + multiplicacion(5.0, 3.0));
         System.out.println("Porcentaje: " + porcentaje(90, 12));
         System.out.println("Raíz cuadrada: " + raiz(25));
-        System.out.println("Módulo: 10 % 3 = " + modulo(10, 3));
         System.out.println("Potencia: " + potencia(2, 3));
         System.out.println("Factorial: " + factorial(5));
     }
