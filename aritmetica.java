@@ -17,6 +17,13 @@ public class aritmetica {
     public static double multiplicacion(double a, double b) {
         return a * b;
     }
+    /*
+    * Función: resta
+    * Autor: Miguel Angel Vargas Mercado
+    */
+    public static double resta(double a, double b) {
+        return (a - b);
+    }
 
     /* 
     * Función: Division
@@ -83,6 +90,7 @@ public static double modulo(double a, double b) {
     public static void main(String[] args) {
         System.out.println("--- Pruebas de Operaciones ---");
         System.out.println("Suma: " + suma(5, 3));
+	 System.out.println("Resta: " + resta(10, 4));
         System.out.println("Multiplicación: " + multiplicacion(5.0, 3.0));
         System.out.println("Porcentaje: " + porcentaje(90, 12));
         System.out.println("Raíz cuadrada: " + raiz(25));
